@@ -1,0 +1,20 @@
+# Use the official Node.js image as base
+FROM node:14
+
+# Set the working directory inside the container
+WORKDIR /usr/signupandsignin/src/app
+
+# Copy package.json and package-lock.json to the container
+COPY signupandsignin/package*.json ./
+
+# Install app dependencies
+RUN npm install
+
+# Copy application code to the container
+COPY signupandsignin/ .
+
+# Expose the port your app will run on
+EXPOSE 3001
+
+# Set up entry point
+CMD ["node", "server.js"]
